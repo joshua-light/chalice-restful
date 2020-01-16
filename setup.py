@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='chalice-restful',
-    version='1.0.0',
+    version='0.0.1',
     packages=find_packages(exclude=['tests*']),
     license='MIT',
     description='Provides a more structured way of writing RESTful APIs ' +
