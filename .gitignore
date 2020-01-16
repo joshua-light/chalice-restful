@@ -1,0 +1,17 @@
+# OSX.
+*.DS_Store
+
+# Python.
+venv/
+__pycache__/
+dist/
+*.egg-info/
+
+# Chalice.
+.chalice/deployments/
+
+# Emacs.
+*~
+\#*\#
+.\#*
+r
