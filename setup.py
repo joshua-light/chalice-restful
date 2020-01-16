@@ -11,5 +11,12 @@ setup(
     install_requires=['chalice'],
     url='https://github.com/JoshuaLight/chalice-restful',
     author='Joshua Light',
-    author_email='j.light.developer@gmail.com'
+    author_email='j.light.developer@gmail.com',
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3.7',
+    ]
 )
