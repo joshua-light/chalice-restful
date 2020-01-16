@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Test with pytest
+      run: |
+        pip install -r requirements-test.txt
+        pytest -s
+    - name: Deploy
+      run: |
+        pip install twine
+        python setup.py sdist
+        twine upload dist/* -u ${{secrets.pypi_username}} ${{secrets.pypi_password}}
+    - name: Deploy with Chalice
+      env:
+        AWS_DEFAULT_REGION: eu-central-1
+        AWS_ACCESS_KEY_ID: AKIAJDVPA3ESJFHOLOSA
+        AWS_SECRET_ACCESS_KEY: 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
+      run: |
+        pip install chalice
+        chalice deploy
