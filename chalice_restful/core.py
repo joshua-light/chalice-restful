@@ -48,4 +48,3 @@ class Api:
                       should be decorated with `route` to ensure
                       they're able to handle incoming requests.
         """
-        ...
