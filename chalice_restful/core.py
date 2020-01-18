@@ -27,11 +27,9 @@ class Resource:
 
 
 class Api:
-    """ Represents an API object that allows developers to define
-        RESTful APIs using routed objects.
-    """
+    """ Represents an API that contains routed resources. """
 
-    supported_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
+    supported_methods = ['get', 'post', 'put', 'patch', 'delete']
 
     def __init__(self, app: Chalice):
         self.app = app
@@ -54,3 +52,4 @@ class Api:
         ensure(resource).is_not_a_type(Resource)
         ensure(resource).is_subclass_of(Resource)
         ensure(resource).has_attribute('route')
+        ensure(resource).has_any_attribute(of=self.supported_methods)

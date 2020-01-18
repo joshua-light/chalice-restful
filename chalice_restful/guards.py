@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Iterable
 
 
 class Ensure:
@@ -31,6 +31,17 @@ class Ensure:
         assert hasattr(self.target, attribute), \
             f'Expected {str(self.target)} ' + \
             f'to have a {attribute} attribute.'
+
+    def has_any_attribute(self, of: Iterable[str]):
+        """ Checks whether the target type has any
+            of the specified attributes.
+        """
+
+        matched = (getattr(self.target, x, None) for x in of)
+
+        assert any(matched), \
+            f'Expected {str(self.target)} to define at least one ' + \
+            f'of the {of} attributes.'
 
 
 ensure = Ensure

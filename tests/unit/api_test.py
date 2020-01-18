@@ -29,7 +29,7 @@ def test_that_cant_add_not_resource_subclass():
         add()
 
 
-def test_that_cant_add_resource_without_route_decorator():
+def test_that_cant_add_resource_without_route_field():
     # Arrange.
     class NonDecoratedResource(Resource): ...
     api = Api(MagicMock())
@@ -41,7 +41,21 @@ def test_that_cant_add_resource_without_route_decorator():
     with pytest.raises(AssertionError):
         add()
 
-# Can't add resource without `route`.
+
+def test_that_cant_add_resource_without_supported_methods():
+    # Arrange.
+    class NonDecoratedResource(Resource):
+        route = '/'
+
+    api = Api(MagicMock())
+
+    # Act.
+    add = lambda: api.add(NonDecoratedResource)
+
+    # Assert.
+    with pytest.raises(AssertionError):
+        add()
+
 # Can't add resource without any of `supported_methods` defined.
 
 # `Api.request` should return `chalice.app.current_request`.
