@@ -9,19 +9,19 @@ class Ensure:
     def __init__(self, target: Any):
         self.target = target
 
-    def is_not_a_type(self, x: type):
-        """ Checks whether the target type is not equal to the specified. """
+    def is_not(self, x: type):
+        """ Checks whether the target is not equal to the specified value. """
 
         assert self.target != x, \
-            f'Expected {self.target.__name__} ' + \
-            f'to not be {x.__name__}'
+            f'Expected {str(self.target)} ' + \
+            f'to not be {str(x)}'
 
     def is_subclass_of(self, x: type):
         """ Checks whether the target type is subclass of the specified. """
 
         assert issubclass(self.target, x), \
-            f'Expected {self.target.__name__} ' + \
-            f'to be a subclass of {x.__name__}'
+            f'Expected {str(self.target)} ' + \
+            f'to be a subclass of {str(x)}'
 
     def has_attribute(self, attribute: str):
         """ Checks whether the target type has attribute
