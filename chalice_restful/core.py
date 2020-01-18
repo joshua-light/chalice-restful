@@ -49,7 +49,19 @@ class Api:
                       they're able to handle incoming requests.
         """
 
-        ensure(resource).is_not_a_type(Resource)
+        def add_method(method: callable, app: Chalice):
+            methods = [method.__name__.upper()]
+
+            route = app.route(resource.route, methods=methods)
+            route(method)
+
+        ensure(resource).is_not(Resource)
         ensure(resource).is_subclass_of(Resource)
         ensure(resource).has_attribute('route')
         ensure(resource).has_any_attribute(of=self.supported_methods)
+
+        methods = (getattr(resource, x, None) for x in Api.supported_methods)
+        methods = [x for x in methods if x]
+
+        for x in methods:
+            add_method(x, self.app)

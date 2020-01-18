@@ -44,18 +44,37 @@ def test_that_cant_add_resource_without_route_field():
 
 def test_that_cant_add_resource_without_supported_methods():
     # Arrange.
-    class NonDecoratedResource(Resource):
+    class SimpleResource(Resource):
         route = '/'
 
     api = Api(MagicMock())
 
     # Act.
-    add = lambda: api.add(NonDecoratedResource)
+    add = lambda: api.add(SimpleResource)
 
     # Assert.
     with pytest.raises(AssertionError):
         add()
 
-# `Api.request` should return `chalice.app.current_request`.
 
-# When adding a `Resource`, its routes are added to `Chalice` object.
+def test_that_when_adding_resource_its_endpoints_are_added_to_chalice():
+    # Arrange.
+    class SimpleResource(Resource):
+        route = '/'
+
+        def get(): ...
+
+    app = MagicMock()
+    route = MagicMock()
+    app.route = MagicMock(return_value=route)
+    api = Api(app)
+
+    # Act.
+    api.add(SimpleResource)
+
+    # Assert.
+    app.route.assert_called_with('/', methods=['GET'])
+    route.assert_called_with(SimpleResource.get)
+
+
+# `Api.request` should return `chalice.app.current_request`.
