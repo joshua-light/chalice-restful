@@ -1,6 +1,21 @@
 from chalice import Chalice
 
 
+class Resource:
+    """ Rerpresents a resource or a collection of resources
+        which define handlers for `GET`, `POST`, etc. HTTP-calls.
+
+        :examples:
+            class Items:
+                def get(): ...
+                def put(): ...
+                def post(): ...
+                def patch(): ...
+                def delete(): ...
+    """
+    ...
+
+
 class Api:
     """ Represents an API object that allows developers to define
         RESTful APIs using resources objects.
