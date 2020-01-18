@@ -37,7 +37,8 @@ class Api:
     @property
     def request(self):
         """ Incoming HTTP-request. """
-        ...
+
+        return self.app.current_request
 
     def add(self, resource: type) -> 'Api':
         """ Defines a `Resource` in the API.

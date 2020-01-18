@@ -77,4 +77,14 @@ def test_that_when_adding_resource_its_endpoints_are_added_to_chalice():
     route.assert_called_with(SimpleResource.get)
 
 
-# `Api.request` should return `chalice.app.current_request`.
+def test_that_request_returns_chalice_current_request():
+    # Arrange.
+    app = MagicMock()
+    app.current_request = 'Fake'
+    api = Api(app)
+
+    # Act.
+    request = api.request
+
+    # Assert.
+    assert request == 'Fake'
