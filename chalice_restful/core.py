@@ -1,11 +1,19 @@
 from chalice import Chalice
 
 
+def route(path: str):
+    """ Wraps a `Resource` subclass and adds a `route` field to it,
+        so it'll be able to handle incoming requests.
+    """
+    ...
+
+
 class Resource:
     """ Rerpresents a resource or a collection of resources
         which define handlers for `GET`, `POST`, etc. HTTP-calls.
 
         :examples:
+            @route('v1/items)
             class Items:
                 def get(): ...
                 def put(): ...
@@ -18,16 +26,7 @@ class Resource:
 
 class Api:
     """ Represents an API object that allows developers to define
-        RESTful APIs using resources objects.
-
-        :examples:
-             @route('/items')
-             class Items:
-                 def get(): ...
-
-             app = Chalice()
-             api = Api(app)
-             api.add(Items)
+        RESTful APIs using routed objects.
     """
 
     supported_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
