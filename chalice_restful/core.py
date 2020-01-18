@@ -1,5 +1,7 @@
 from chalice import Chalice
 
+from chalice_restful.guards import ensure
+
 
 def route(path: str):
     """ Wraps a `Resource` subclass and adds a `route` field to it,
@@ -48,3 +50,5 @@ class Api:
                       should be decorated with `route` to ensure
                       they're able to handle incoming requests.
         """
+
+        ensure(resource).is_not_a_type(Resource)
