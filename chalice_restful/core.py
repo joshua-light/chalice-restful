@@ -53,3 +53,4 @@ class Api:
 
         ensure(resource).is_not_a_type(Resource)
         ensure(resource).is_subclass_of(Resource)
+        ensure(resource).has_attribute('route')

@@ -28,7 +28,19 @@ def test_that_cant_add_not_resource_subclass():
     with pytest.raises(AssertionError):
         add()
 
-# Can't add not `Resource`.
+
+def test_that_cant_add_resource_without_route_decorator():
+    # Arrange.
+    class NonDecoratedResource(Resource): ...
+    api = Api(MagicMock())
+
+    # Act.
+    add = lambda: api.add(NonDecoratedResource)
+
+    # Assert.
+    with pytest.raises(AssertionError):
+        add()
+
 # Can't add resource without `route`.
 # Can't add resource without any of `supported_methods` defined.
 
