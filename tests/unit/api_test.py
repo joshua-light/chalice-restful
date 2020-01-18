@@ -56,8 +56,6 @@ def test_that_cant_add_resource_without_supported_methods():
     with pytest.raises(AssertionError):
         add()
 
-# Can't add resource without any of `supported_methods` defined.
-
 # `Api.request` should return `chalice.app.current_request`.
 
 # When adding a `Resource`, its routes are added to `Chalice` object.
