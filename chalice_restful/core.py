@@ -94,7 +94,6 @@ class Api:
             route = app.route(resource.route, methods=methods)
             route(method)
 
-        ensure(resource).is_not(Resource)
         ensure(resource).is_subclass_of(Resource)
         ensure(resource).has_attribute('route')
         ensure(resource).has_any_attribute(of=self.supported_methods)
