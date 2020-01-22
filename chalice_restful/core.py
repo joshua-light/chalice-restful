@@ -3,6 +3,19 @@ from chalice import Chalice
 from chalice_restful.common.guards import ensure
 
 
+def flag(name):
+    """ Wraps a decorator that represents a configuration flag. """
+
+    def flag_body(decorator):
+        def decorator_body(x):
+
+            setattr(x, name, True)
+            return x
+
+        return decorator_body
+    return flag_body
+
+
 def config(name):
     """ Wraps a decorator that represents some kind of configuration data
          as a named field.
