@@ -1,1 +1,1 @@
-from .core import Api, Resource
+from .core import Api, Resource, route

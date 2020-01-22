@@ -7,7 +7,12 @@ def route(path: str):
     """ Wraps a `Resource` subclass and adds a `route` field to it,
         so it'll be able to handle incoming requests.
     """
-    ...
+
+    def body(cls):
+        cls.route = path
+
+        return cls
+    return body
 
 
 class Resource:
