@@ -40,6 +40,14 @@ def route(path: str):
     return body
 
 
+@config(name='cors')
+def cors(_):
+    """ Wraps a `Resource` subclass or a HTTP-handler function
+        and adds `cors` field to it, so it'll be able
+        to handle CORS.
+    """
+
+
 class Resource:
     """ Rerpresents a resource or a collection of resources
         which define handlers for `GET`, `POST`, etc. HTTP-calls.
