@@ -29,7 +29,7 @@ def test_that_config_adds_named_field_to_the_function():
 
 def test_that_flag_adds_named_field_to_the_class():
     # Arrange.
-    @flag(name='has_x')
+    @flag
     def has_x(): ...
 
     # Act.
@@ -42,7 +42,7 @@ def test_that_flag_adds_named_field_to_the_class():
 
 def test_that_flag_adds_named_field_to_the_function():
     # Arrange.
-    @flag(name='has_x')
+    @flag
     def has_x(): ...
 
     # Act.
