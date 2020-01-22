@@ -89,9 +89,20 @@ class Api:
         """
 
         def add_method(method: callable, app: Chalice):
-            methods = [method.__name__.upper()]
+            def put(field: str, to: dict):
+                if field not in to:
+                    value = getattr(method, field, None) or \
+                            getattr(resource, field, None)
 
-            route = app.route(resource.route, methods=methods)
+                    if value:
+                        to[field] = value
+
+            methods = [method.__name__.upper()]
+            kwargs = {'methods': methods}
+
+            put('authorizer', to=kwargs)
+
+            route = app.route(resource.route, **kwargs)
             route(method)
 
         ensure(resource).is_subclass_of(Resource)
