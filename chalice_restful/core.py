@@ -8,6 +8,8 @@ def route(path: str):
         so it'll be able to handle incoming requests.
     """
 
+    ensure(path).starts_with('/')
+
     def body(cls):
         ensure(cls).is_class()
 

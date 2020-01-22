@@ -15,7 +15,7 @@ class Ensure:
 
         assert isclass(self.target), \
             f'Expected {str(self.target)} ' + \
-            f'to be a class.'
+            f'to be a class'
 
     def is_not(self, x: type):
         """ Checks whether the target is not equal to the specified value. """
@@ -38,7 +38,7 @@ class Ensure:
 
         assert hasattr(self.target, attribute), \
             f'Expected {str(self.target)} ' + \
-            f'to have a {attribute} attribute.'
+            f'to have a {attribute} attribute'
 
     def has_any_attribute(self, of: Iterable[str]):
         """ Checks whether the target type has any
@@ -49,7 +49,15 @@ class Ensure:
 
         assert any(matched), \
             f'Expected {str(self.target)} to define at least one ' + \
-            f'of the {of} attributes.'
+            f'of the {of} attributes'
+
+    def starts_with(self, prefix: str):
+        """ Checks whether the target string starts with
+            the specified prefix.
+        """
+
+        assert self.target.startswith(prefix), \
+            f'Expected {self.target} to start with {prefix}'
 
 
 ensure = Ensure
