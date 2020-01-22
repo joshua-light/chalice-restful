@@ -97,6 +97,26 @@ def test_that_when_resource_is_authorized_its_endpoints_are_added_with_authorize
     app.route.assert_called_with('/', methods=['GET'], authorizer='x')
 
 
+def test_that_when_endpoint_is_authorized_it_is_added_with_authorizer():
+    # Arrange.
+    class SimpleResource(Resource):
+        route = '/'
+
+        @authorized('x')
+        def get(): ...
+
+    app = MagicMock()
+    route = MagicMock()
+    app.route = MagicMock(return_value=route)
+    api = Api(app)
+
+    # Act.
+    api.add(SimpleResource)
+
+    # Assert.
+    app.route.assert_called_with('/', methods=['GET'], authorizer='x')
+
+
 def test_that_request_returns_chalice_current_request():
     # Arrange.
     app = MagicMock()
