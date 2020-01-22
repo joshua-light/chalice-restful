@@ -1,6 +1,6 @@
 from chalice import Chalice
 
-from chalice_restful.guards import ensure
+from chalice_restful.common.guards import ensure
 
 
 def route(path: str):
