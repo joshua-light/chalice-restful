@@ -1,4 +1,5 @@
 from typing import Any, Iterable
+from inspect import isclass
 
 
 class Ensure:
@@ -8,6 +9,13 @@ class Ensure:
 
     def __init__(self, target: Any):
         self.target = target
+
+    def is_class(self):
+        """ Checks whether the target is a class. """
+
+        assert isclass(self.target), \
+            f'Expected {str(self.target)} ' + \
+            f'to be a class.'
 
     def is_not(self, x: type):
         """ Checks whether the target is not equal to the specified value. """

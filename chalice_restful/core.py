@@ -9,6 +9,8 @@ def route(path: str):
     """
 
     def body(cls):
+        ensure(cls).is_class()
+
         cls.route = path
 
         return cls
