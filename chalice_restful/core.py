@@ -3,6 +3,27 @@ from chalice import Chalice
 from chalice_restful.common.guards import ensure
 
 
+def config(name):
+    """ Wraps a decorator that represents some kind of configuration data
+         as a named field.
+    """
+
+    def config_body(decorator):
+        def decorator_body(value):
+
+            # Validate the value.
+            decorator(value)
+
+            def body(*args, **kwargs):
+                x = args[0]
+                setattr(x, name, value)
+                return x
+
+            return body
+        return decorator_body
+    return config_body
+
+
 def route(path: str):
     """ Wraps a `Resource` subclass and adds a `route` field to it,
         so it'll be able to handle incoming requests.
