@@ -7,9 +7,6 @@ __pycache__/
 dist/
 *.egg-info/
 
-# Chalice.
-.chalice/deployments/
-
 # Emacs.
 *~
 \#*\#
