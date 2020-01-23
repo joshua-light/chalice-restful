@@ -35,7 +35,7 @@ class Resource:
         which define handlers for `GET`, `POST`, etc. HTTP-calls.
 
         :examples:
-            @route('v1/items)
+            @route('v1/items')
             class Items:
                 def get(): ...
                 def put(): ...
