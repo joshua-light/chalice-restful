@@ -4,7 +4,7 @@ from inspect import isclass
 
 class Ensure:
     """ Represents a bunch of validations,
-        which can be applied to a `target`.
+        which can be applied to the `target`.
     """
 
     def __init__(self, target: Any):
