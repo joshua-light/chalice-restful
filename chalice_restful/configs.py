@@ -40,6 +40,7 @@ def config(decorator):
 
     def decorator_body(value):
 
+        # This allows client to validate the value in decorator body.
         decorator(value)
 
         def body(*args, **kwargs):
