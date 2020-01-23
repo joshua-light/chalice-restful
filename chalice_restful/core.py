@@ -75,6 +75,7 @@ class Api:
             kwargs = {'methods': methods}
 
             put('authorizer', to=kwargs)
+            put('cors', to=kwargs)
 
             route = app.route(resource.route, **kwargs)
             route(method)
