@@ -1,7 +1,7 @@
 import pytest
 from mock import MagicMock
 
-from chalice_restful import Api, Resource, authorizer, cors
+from chalice_restful import Api, Resource, authorizer, cors, api_key_required
 
 
 def test_that_cant_add_resource_class_itself():
@@ -95,6 +95,26 @@ def test_that_when_resource_has_cors_its_endpoints_are_added_with_cors():
 
     # Assert.
     app.route.assert_called_with('/', methods=['GET'], cors=True)
+
+
+def test_that_when_resource_requires_api_key_its_endpoints_are_added_with_api_key_required():
+    # Arrange.
+    @api_key_required
+    class SimpleResource(Resource):
+        route = '/'
+
+        def get(): ...
+
+    app = MagicMock()
+    route = MagicMock()
+    app.route = MagicMock(return_value=route)
+    api = Api(app)
+
+    # Act.
+    api.add(SimpleResource)
+
+    # Assert.
+    app.route.assert_called_with('/', methods=['GET'], api_key_required=True)
 
 
 def test_that_when_resource_is_authorized_its_endpoints_are_added_with_authorizer():

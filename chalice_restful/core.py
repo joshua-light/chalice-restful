@@ -22,6 +22,14 @@ def cors():
     """
 
 
+@flag
+def api_key_required():
+    """ Wraps a `Resource` subclass or a HTTP-handler function
+        and adds `api_key_required` field to it, so it'll be able
+        to require API key from client.
+    """
+
+
 class Resource:
     """ Rerpresents a resource or a collection of resources
         which define handlers for `GET`, `POST`, etc. HTTP-calls.
@@ -76,6 +84,7 @@ class Api:
 
             put('authorizer', to=kwargs)
             put('cors', to=kwargs)
+            put('api_key_required', to=kwargs)
 
             route = app.route(resource.route, **kwargs)
             route(method)
