@@ -25,15 +25,19 @@ def cors():
     a `cors=True` attribute to a decorated function or class.
 
     When it's used, the `Api` instance enables Cross-Origin Resource Sharing
-    for an endpoint or resource, so it can be requested from another domain.
+    for an endpoint or resource, so one can be requested from another domain.
     """
 
 
 @flag
 def api_key_required():
-    """ Wraps a `Resource` subclass or a HTTP-handler function
-        and adds `api_key_required` field to it, so it'll be able
-        to require API key from client.
+    """Enforces a decorated endpoint or resource to require API key.
+
+    This decorator is a configuration decorator that only adds
+    a `api_key_required=True` attribute to a decorated function or class.
+
+    When it's used, all incoming requests to an endpoint or resource
+    should contain `x-api-key` header with valid value from AWS API Gateway.
     """
 
 
