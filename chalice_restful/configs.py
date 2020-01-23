@@ -35,7 +35,7 @@ def flag(decorator):
 
 def config(decorator):
     """ Wraps a decorator that represents some kind of configuration data
-         as a named field.
+        as a named field.
     """
 
     def decorator_body(value):
