@@ -25,7 +25,7 @@ class Ensure:
             f'to not be {x}'
 
     def is_subclass_of(self, x: type):
-        """ Ensures that the target type is subclass of the specified. """
+        """ Ensures that the target is subclass of the specified. """
 
         assert issubclass(self.target, x), \
             f'Expected {self.target} ' + \
