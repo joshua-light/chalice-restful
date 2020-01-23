@@ -14,25 +14,20 @@ def flag(decorator):
     return body
 
 
-def config(name):
+def config(decorator):
     """ Wraps a decorator that represents some kind of configuration data
          as a named field.
     """
 
-    def config_body(decorator):
-        def decorator_body(value):
+    def decorator_body(value):
+        def body(*args, **kwargs):
 
-            # Validate the value.
-            decorator(value)
+            x = args[0]
+            setattr(x, decorator.__name__, value)
+            return x
 
-            def body(*args, **kwargs):
-                x = args[0]
-                setattr(x, name, value)
-                return x
-
-            return body
-        return decorator_body
-    return config_body
+        return body
+    return decorator_body
 
 
 def route(path: str):
@@ -51,8 +46,8 @@ def route(path: str):
     return body
 
 
-@config(name='cors')
-def cors(_):
+@flag
+def cors():
     """ Wraps a `Resource` subclass or a HTTP-handler function
         and adds `cors` field to it, so it'll be able
         to handle CORS.

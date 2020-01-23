@@ -1,7 +1,7 @@
 import pytest
 from mock import MagicMock
 
-from chalice_restful import Api, Resource, authorized
+from chalice_restful import Api, Resource, authorizer
 
 
 def test_that_cant_add_resource_class_itself():
@@ -79,7 +79,7 @@ def test_that_when_adding_resource_its_endpoints_are_added_to_chalice():
 
 def test_that_when_resource_is_authorized_its_endpoints_are_added_with_authorizer():
     # Arrange.
-    @authorized('x')
+    @authorizer('x')
     class SimpleResource(Resource):
         route = '/'
 
@@ -102,7 +102,7 @@ def test_that_when_endpoint_is_authorized_it_is_added_with_authorizer():
     class SimpleResource(Resource):
         route = '/'
 
-        @authorized('x')
+        @authorizer('x')
         def get(): ...
 
     app = MagicMock()

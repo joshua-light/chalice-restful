@@ -3,7 +3,7 @@ from chalice_restful import config, flag
 
 def test_that_config_adds_named_field_to_the_class():
     # Arrange.
-    @config(name='field')
+    @config
     def aspect(_): ...
     class Fake: ...
 
@@ -11,12 +11,12 @@ def test_that_config_adds_named_field_to_the_class():
     Fake = aspect('value')(Fake)
 
     # Assert.
-    assert Fake.field == 'value'
+    assert Fake.aspect == 'value'
 
 
 def test_that_config_adds_named_field_to_the_function():
     # Arrange.
-    @config(name='field')
+    @config
     def aspect(_): ...
     def fake(): ...
 
@@ -24,7 +24,7 @@ def test_that_config_adds_named_field_to_the_function():
     fake = aspect('value')(fake)
 
     # Assert.
-    assert fake.field == 'value'
+    assert fake.aspect == 'value'
 
 
 def test_that_flag_adds_named_field_to_the_class():
