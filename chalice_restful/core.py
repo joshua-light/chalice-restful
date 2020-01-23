@@ -1,23 +1,17 @@
 from chalice import Chalice
 
 from chalice_restful.common.guards import ensure
-from chalice_restful.configs import flag
+from chalice_restful.configs import flag, config, only_classes
 
 
+@config
+@only_classes
 def route(path: str):
     """ Wraps a `Resource` subclass and adds a `route` field to it,
         so it'll be able to handle incoming requests.
     """
 
     ensure(path).starts_with('/')
-
-    def body(cls):
-        ensure(cls).is_class()
-
-        cls.route = path
-
-        return cls
-    return body
 
 
 @flag

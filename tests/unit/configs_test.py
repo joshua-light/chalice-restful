@@ -91,7 +91,7 @@ def test_that_only_classes_config_cant_be_added_to_function():
     # Arrange.
     @config
     @only_classes
-    def has_x(): ...
+    def has_x(_): ...
 
     def fake(): ...
 
@@ -107,7 +107,7 @@ def test_that_only_functions_config_cant_be_added_to_class():
     # Arrange.
     @config
     @only_functions
-    def has_x(): ...
+    def has_x(_): ...
 
     class Fake: ...
 
@@ -121,7 +121,7 @@ def test_that_only_functions_config_cant_be_added_to_class():
 
 def test_that_cant_add_both_only_functions_and_only_classes_flags_to_class():
     # Arrange.
-    @config
+    @flag
     @only_functions
     @only_classes
     def has_x(): ...
@@ -138,7 +138,7 @@ def test_that_cant_add_both_only_functions_and_only_classes_flags_to_class():
 
 def test_that_cant_add_both_only_functions_and_only_classes_flags_to_function():
     # Arrange.
-    @config
+    @flag
     @only_functions
     @only_classes
     def has_x(): ...

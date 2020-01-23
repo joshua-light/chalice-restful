@@ -39,6 +39,9 @@ def config(decorator):
     """
 
     def decorator_body(value):
+
+        decorator(value)
+
         def body(*args, **kwargs):
 
             x = args[0]

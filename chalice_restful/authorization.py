@@ -2,7 +2,7 @@ from chalice_restful import config
 
 
 @config
-def authorizer():
+def authorizer(_):
     """ Wraps a `Resource` subclass or a HTTP-handler function
         and adds `authorizer` field to it, so it'll be able
         to handle authorized requests.
