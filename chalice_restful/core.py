@@ -7,8 +7,11 @@ from chalice_restful.configs import flag, config, only_classes
 @config
 @only_classes
 def route(path: str):
-    """ Wraps a `Resource` subclass and adds a `route` field to it,
-        so it'll be able to handle incoming requests.
+    """Adds routing ability to a subclass of `Resource`.
+
+    This decorator is a configuration decorator that only adds
+    a `route` attribute to a decorated class and ensures that the `path`
+    value represents a valid endpoint.
     """
 
     ensure(path).starts_with('/')
@@ -16,9 +19,13 @@ def route(path: str):
 
 @flag
 def cors():
-    """ Wraps a `Resource` subclass or a HTTP-handler function
-        and adds `cors` field to it, so it'll be able
-        to handle CORS.
+    """Enables CORS for a decorated endpoint or resource.
+
+    This decorator is a configuration decorator that only adds
+    a `cors=True` attribute to a decorated function or class.
+
+    When it's used, the `Api` instance enables Cross-Origin Resource Sharing
+    for an endpoint or resource, so it can be requested from another domain.
     """
 
 
