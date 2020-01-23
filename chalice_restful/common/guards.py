@@ -32,7 +32,7 @@ class Ensure:
             f'to be a subclass of {x}'
 
     def has_attribute(self, attribute: str):
-        """ Ensures that the target type has attribute
+        """ Ensures that the target has attribute
             of the specified name.
         """
 
@@ -41,7 +41,7 @@ class Ensure:
             f'to have a {attribute} attribute'
 
     def has_any_attribute(self, of: Iterable[str]):
-        """ Ensures that the target type has any
+        """ Ensures that the target has any
             of the specified attributes.
         """
 
