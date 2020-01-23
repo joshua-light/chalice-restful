@@ -17,7 +17,7 @@ class Ensure:
             f'Expected {self.target} ' + \
             f'to be a class'
 
-    def is_not(self, x: type):
+    def is_not(self, x):
         """ Ensures that the target is not equal to the specified value. """
 
         assert self.target != x, \
