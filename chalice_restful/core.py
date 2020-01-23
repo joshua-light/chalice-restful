@@ -47,7 +47,7 @@ class Resource:
     Represents a bunch of functions for handling different HTTP-requests.
 
     Subclasses of this class should define a `route` attribute
-    (either directly or using `route` decorator):
+    (either directly or using the `route` decorator):
         a) directly:
         class Items:
             route = '/v1/items'
