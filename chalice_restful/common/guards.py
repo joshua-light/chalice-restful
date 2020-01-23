@@ -14,22 +14,22 @@ class Ensure:
         """ Ensures that the target is a class. """
 
         assert isclass(self.target), \
-            f'Expected {str(self.target)} ' + \
+            f'Expected {self.target} ' + \
             f'to be a class'
 
     def is_not(self, x: type):
         """ Ensures that the target is not equal to the specified value. """
 
         assert self.target != x, \
-            f'Expected {str(self.target)} ' + \
-            f'to not be {str(x)}'
+            f'Expected {self.target} ' + \
+            f'to not be {x}'
 
     def is_subclass_of(self, x: type):
         """ Ensures that the target type is subclass of the specified. """
 
         assert issubclass(self.target, x), \
-            f'Expected {str(self.target)} ' + \
-            f'to be a subclass of {str(x)}'
+            f'Expected {self.target} ' + \
+            f'to be a subclass of {x}'
 
     def has_attribute(self, attribute: str):
         """ Ensures that the target type has attribute
@@ -37,7 +37,7 @@ class Ensure:
         """
 
         assert hasattr(self.target, attribute), \
-            f'Expected {str(self.target)} ' + \
+            f'Expected {self.target} ' + \
             f'to have a {attribute} attribute'
 
     def has_any_attribute(self, of: Iterable[str]):
@@ -48,7 +48,7 @@ class Ensure:
         matched = (getattr(self.target, x, None) for x in of)
 
         assert any(matched), \
-            f'Expected {str(self.target)} to define at least one ' + \
+            f'Expected {self.target} to define at least one ' + \
             f'of the {of} attributes'
 
     def starts_with(self, prefix: str):
