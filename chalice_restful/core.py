@@ -53,7 +53,7 @@ class Resource:
             route = '/v1/items'
             ...
 
-        b) with decorator:
+        b) using the decorator:
         @route('/v1/items')
         class Items:
             ...
