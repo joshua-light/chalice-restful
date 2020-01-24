@@ -4,7 +4,11 @@ A more structured way of writing [Chalice](https://github.com/aws/chalice) APIs.
 
 ## Installation
 
-...
+Install Chalice-RESTful with `pip`:
+
+``` shell
+pip install chalice-restful
+```
 
 ## Usage
 
