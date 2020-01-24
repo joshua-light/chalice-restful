@@ -78,9 +78,9 @@ $ pip install chalice-restful
 ### Resources
 
 An atomic block of Chalice-RESTful is a _resource_: any subclass of the `Resource`
-that has `route` attribute and at least one endpoint. All resources should be then
-added to the `Api` object that will take care of registering each individual endpoint
-in the `Chalice` instance.
+that has `route` attribute and at least one endpoint (`get`, `post`, `put`, etc.).
+All resources should be then added to the `Api` object that will take care of registering
+each individual endpoint in the `Chalice` instance.
 
 ``` python
 from chalice import Chalice
@@ -97,7 +97,7 @@ class Items(Resource):
 api.add(Items)
 ```
 
-It's worth mentioning that you can use configuration attribute `route`, that will add
+It's worth mentioning that you can use configuration attribute `route` that will add
 `route` attribute automatically while preserving pretty decorators syntax:
 
 ``` python
