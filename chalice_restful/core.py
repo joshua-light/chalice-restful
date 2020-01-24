@@ -110,18 +110,30 @@ class Api:
 
     @property
     def request(self):
-        """ Incoming HTTP-request. """
+        """Incoming HTTP-request.
+
+        This property is similar to `Chalice.current_request` one,
+        but is more verbose and small. It's ususally accessed as
+        `api.request`.
+        """
 
         return self.app.current_request
 
     def add(self, resource: type) -> 'Api':
-        """ Defines a `Resource` in the API.
+        """Defines a `Resource` in the API.
 
-            :param resource: Type that rerpresents a group of endpoints.
-            :return: `self` object.
-            :remarks: Resources that were added to the API
-                      should be decorated with `route` to ensure
-                      they're able to handle incoming requests.
+        All the endpoints defined in the `resource` class that are
+        static members will be automatically registered in the
+        `Chalice` instance.
+
+        Args:
+            resource: Type that rerpresents a group of endpoints.
+
+        Raises:
+            AssertionError: Raised if:
+                a) `resource` is a `Resource` class itself;
+                b) `resource` doesn't have `route` attribute;
+                c) `resource` doesn't have endpoints defined.
         """
 
         def add_method(method: callable, app: Chalice):
