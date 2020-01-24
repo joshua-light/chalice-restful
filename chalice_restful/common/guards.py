@@ -3,8 +3,20 @@ from inspect import isclass
 
 
 class Ensure:
-    """ Represents a bunch of validations,
-        which can be applied to the `target`.
+    """A set of requirements an object should satisfy.
+
+    Instance of this class wraps an object and allow to
+    ensure that some of the properties of one are valid.
+
+    Any statement starts with `ensure` function call:
+        ensure(...)
+
+    Then one of the methods of the `Ensure` class can be added to
+    finish the sentence:
+        ensure(2 + 2).is_(5)
+
+    If the target object satisfies the requirement, nothing happens,
+    otherwise an `AssertionError` is thrown.
     """
 
     def __init__(self, target: Any):
