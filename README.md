@@ -44,7 +44,7 @@ def add_orders(): ...
 It'd be much better if we could use an object-oriented approach, so closely related functions
 will be grouped together in a class.
 
-This is what the Chalice-RESTful for:
+An this is _exactly_ what the Chalice-RESTful for:
 
 ``` python
 app = Chalice('example')
