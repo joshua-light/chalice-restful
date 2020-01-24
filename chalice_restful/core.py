@@ -101,6 +101,8 @@ class Api:
 
     All endpoints defined in those resources will be added to the
     `Chalice` instance.
+
+    The `app.app` should be used in the `template.yaml` file as an API handler.
     """
 
     supported_methods = ['get', 'post', 'put', 'patch', 'delete']
