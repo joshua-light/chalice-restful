@@ -82,11 +82,26 @@ class Resource:
             def get(): ...
             def put(): ...
     """
-    ...
 
 
 class Api:
-    """ Represents an API that contains routed resources. """
+    """A RESTful API.
+
+    Represents a collection of `Resource` subclasses, where
+    each is able to handle incoming requests.
+
+    The `Api` object should be created using `Chalice` application instance:
+        app = Chalice(...)
+        api = Api(app)
+
+    Then any number of resources can be defined in the API:
+        api.add(Items)
+        api.add(Item)
+        ...
+
+    All endpoints defined in those resources will be added to the
+    `Chalice` instance.
+    """
 
     supported_methods = ['get', 'post', 'put', 'patch', 'delete']
 
