@@ -114,7 +114,7 @@ class Api:
     def request(self):
         """Incoming HTTP-request.
 
-        This property is similar to `Chalice.current_request` one,
+        This property is similar to `Chalice.current_request`,
         but is more verbose and small. It's ususally accessed as
         `api.request`.
         """
