@@ -1,6 +1,7 @@
 # Chalice-RESTful
 
 A more structured way of writing [Chalice](https://github.com/aws/chalice) APIs.
+Very similar to [Flask-RESTful](https://github.com/flask-restful/flask-restful).
 
 ## Motivation
 
@@ -51,12 +52,12 @@ app = Chalice('example')
 api = Api(app)
 
 @route('/v1/items')
-class Items:
+class Items(Resource):
     def get(): ...
     def post(): ...
 
 @route('/v1/orders)
-class Orders:
+class Orders(Resource):
     def get(): ...
     def post(): ...
 
@@ -74,11 +75,43 @@ $ pip install chalice-restful
 
 ## Usage
 
-...
-
 ### Resources
 
-...
+An atomic block of Chalice-RESTful is a _resource_: any subclass of the `Resource`
+that has `route` attribute and at least one endpoint. All resources should be then
+added to the `Api` object that will take care of registering each individual endpoint
+in the `Chalice` instance.
+
+``` python
+from chalice import Chalice
+from chalice_restful import Api, Resource
+
+app = Chalice('example')
+api = Api(app)
+
+class Items(Resource):
+    route = '/v1/items'
+
+    def get(): ...
+
+api.add(Items)
+```
+
+It's worth mentioning that you can use configuration attribute `route`, that will add
+`route` attribute automatically while preserving pretty decorators syntax:
+
+``` python
+from chalice_restful import Api, Resource, route
+
+app = Chalice('example')
+api = Api(app)
+
+@route('/v1/items')
+class Items(Resource):
+    def get(): ...
+
+api.add(Items)
+```
 
 ### Authorization
 
