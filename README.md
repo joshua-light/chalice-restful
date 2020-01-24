@@ -17,7 +17,7 @@ def get_items(): ...
 def add_item(): ...
 ```
 
-This is great for building any kind of API, while in REST we deal with
+This is great for building any kind of API, but in REST we deal with
 higher level objects -- resources, where each represents a set of functions
 related to each other.
 
