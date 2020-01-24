@@ -119,7 +119,7 @@ class Api:
 
         return self.app.current_request
 
-    def add(self, resource: type) -> 'Api':
+    def add(self, resource: type):
         """Defines a `Resource` in the API.
 
         All the endpoints defined in the `resource` class that are
