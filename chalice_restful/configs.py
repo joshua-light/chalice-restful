@@ -21,7 +21,29 @@ def _enforce_constraints(decorator, instance):
 
 
 def flag(decorator):
-    """ Wraps a decorator that represents a configuration flag. """
+    """Makes another decorator a flag.
+
+    `flag` is a high level decorator that should be
+    applied on another decorators:
+        @flag
+        def enabled(): ...
+
+    Here the `enabled` decorator can be considered as a flag,
+    so when applied it'll add an `enabled` field with a value of `True`
+    to the target instance.
+
+    For example:
+        @enabled
+        def func(): ...
+
+        print(func.enabled)  # Prints `True`.
+
+    Classes can be decorated as well:
+        @enabled
+        class Test: ...
+
+        print(Test.enabled)  # Prints `True`.
+    """
 
     def body(x):
 
