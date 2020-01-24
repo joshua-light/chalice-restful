@@ -21,7 +21,7 @@ This is great for building any kind of API, but in REST we deal with
 higher level objects -- resources, where each represents a set of functions
 related to each other.
 
-But we still limited to write them in one place:
+Though we still limited to write them in one place:
 
 ``` python
 app = Chalice('example')
@@ -34,10 +34,10 @@ def add_item(): ...
 
 ...
 
-@app.route('/v1/orders, methods=['GET'])
+@app.route('/v1/orders', methods=['GET'])
 def get_orders(): ...
 
-@app.route('/v1/orders, methods=['POST'])
+@app.route('/v1/orders', methods=['POST'])
 def add_orders(): ...
 ```
 
