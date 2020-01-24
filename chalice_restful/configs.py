@@ -1,7 +1,7 @@
 from inspect import isclass, isfunction
 
 
-def enforce_constraints(decorator, instance):
+def _enforce_constraints(decorator, instance):
     enforce_class = getattr(decorator, 'only_classes', False)
     enforce_function = getattr(decorator, 'only_functions', False)
 
@@ -25,7 +25,7 @@ def flag(decorator):
 
     def body(x):
 
-        enforce_constraints(decorator, x)
+        _enforce_constraints(decorator, x)
 
         setattr(x, decorator.__name__, True)
         return x
@@ -46,7 +46,7 @@ def config(decorator):
         def body(*args, **kwargs):
 
             x = args[0]
-            enforce_constraints(decorator, x)
+            _enforce_constraints(decorator, x)
 
             setattr(x, decorator.__name__, value)
             return x
