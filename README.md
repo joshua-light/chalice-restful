@@ -1,7 +1,7 @@
 # Chalice-RESTful
 
-A more structured way of writing [Chalice](https://github.com/aws/chalice) APIs.
-Very similar to [Flask-RESTful](https://github.com/flask-restful/flask-restful).
+_A more structured way of writing [Chalice](https://github.com/aws/chalice) APIs.
+Very similar to [Flask-RESTful](https://github.com/flask-restful/flask-restful)._
 
 ## Motivation
 
