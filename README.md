@@ -116,15 +116,87 @@ api.add(Items)
 
 ### Authorization
 
-...
+You can add an authorization to resources or endpoints in several ways.
 
 #### API key
 
-...
+To require an API key, use `api_key_required` configuration decorator:
+
+``` python
+from chalice import Chalice
+from chalice_restful import Api, Resource, route
+
+app = Chalice('example')
+api = Api(app)
+
+@route('/v1/items')
+@api_key_required
+class Items(Resource):
+    def get(): ...
+
+api.add(Items)
+```
+
+You can decorate individual endpoints as well:
+
+``` python
+from chalice import Chalice
+from chalice_restful import Api, Resource, route
+
+app = Chalice('example')
+api = Api(app)
+
+@route('/v1/items')
+class Items(Resource):
+    def get(): ...
+
+    @api_key_required
+    def post(): ...
+
+api.add(Items)
+```
 
 #### Authorizers
 
-...
+To add an authorizer instance, use `authorizer` configuration decorator:
+
+``` python
+from chalice import Chalice, IAMAuthorizer
+from chalice_restful import Api, Resource, route, authorizer
+
+app = Chalice('example')
+api = Api(app)
+iam = IAMAuthorizer()
+
+@route('/v1/items')
+@authorizer(iam)
+class Items(Resource):
+    def get(): ...
+
+api.add(Items)
+```
+
+You can decorate individual endpoints as well:
+
+``` python
+from chalice import Chalice, IAMAuthorizer
+from chalice_restful import Api, Resource, route, authorizer
+
+app = Chalice('example')
+api = Api(app)
+iam = IAMAuthorizer()
+
+@route('/v1/items')
+class Items(Resource):
+    def get(): ...
+
+    @authorizer(iam)
+    def post(): ...
+
+api.add(Items)
+```
+
+More on Chalice authorizers you can find [here](https://github.com/aws/chalice/blob/master/docs/source/topics/authorizers.rst).
 
 ### CORS
 
