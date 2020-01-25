@@ -114,6 +114,11 @@ class Items(Resource):
 api.add(Items)
 ```
 
+#### HTTP Methods
+
+Currently, Chalice-RESTful supports `get`, `post`, `put`, `patch` and `delete` endpoints,
+which can be defined in resources.
+
 ### Authorization
 
 You can add an authorization to resources or endpoints in several ways.
