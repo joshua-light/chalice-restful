@@ -1,0 +1,14 @@
+# OSX.
+*.DS_Store
+
+# Python.
+venv/
+__pycache__/
+dist/
+*.egg-info/
+
+# Emacs.
+*~
+\#*\#
+.\#*
+r
