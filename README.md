@@ -97,7 +97,7 @@ class Items(Resource):
 api.add(Items)
 ```
 
-It's worth mentioning that you can use configuration attribute `route` that will add
+It's worth mentioning that you can use configuration decorator `route` that will add
 `route` attribute automatically while preserving pretty decorators syntax:
 
 ``` python
