@@ -101,6 +101,7 @@ It's worth mentioning that you can use configuration decorator `route` that will
 `route` attribute automatically while preserving pretty decorators syntax:
 
 ``` python
+from chalice import Chalice
 from chalice_restful import Api, Resource, route
 
 app = Chalice('example')
