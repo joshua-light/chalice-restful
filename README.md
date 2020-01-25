@@ -6,7 +6,7 @@ Very similar to [Flask-RESTful](https://github.com/flask-restful/flask-restful).
 ## Motivation
 
 In pure [Chalice](https://github.com/aws/chalice) you only need to define plain functions
-that handle routed HTTP-requests:
+to handle routed HTTP-requests:
 
 ``` python
 app = Chalice('example')
