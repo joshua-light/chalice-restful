@@ -120,11 +120,11 @@ You can add an authorization to resources or endpoints in several ways.
 
 #### API key
 
-To require an API key, use `api_key_required` configuration decorator:
+To require an API key use `api_key_required` configuration decorator:
 
 ``` python
 from chalice import Chalice
-from chalice_restful import Api, Resource, route
+from chalice_restful import Api, Resource, api_key_required, route
 
 app = Chalice('example')
 api = Api(app)
@@ -141,7 +141,7 @@ You can decorate individual endpoints as well:
 
 ``` python
 from chalice import Chalice
-from chalice_restful import Api, Resource, route
+from chalice_restful import Api, Resource, api_key_required, route
 
 app = Chalice('example')
 api = Api(app)
@@ -153,16 +153,19 @@ class Items(Resource):
     @api_key_required
     def post(): ...
 
+    @api_key_required
+    def put(): ...
+
 api.add(Items)
 ```
 
 #### Authorizers
 
-To add an authorizer instance, use `authorizer` configuration decorator:
+To add an authorizer instance use `authorizer` configuration decorator:
 
 ``` python
 from chalice import Chalice, IAMAuthorizer
-from chalice_restful import Api, Resource, route, authorizer
+from chalice_restful import Api, Resource, authorizer, route
 
 app = Chalice('example')
 api = Api(app)
@@ -180,7 +183,7 @@ You can decorate individual endpoints as well:
 
 ``` python
 from chalice import Chalice, IAMAuthorizer
-from chalice_restful import Api, Resource, route, authorizer
+from chalice_restful import Api, Resource, authorizer, route
 
 app = Chalice('example')
 api = Api(app)
@@ -193,14 +196,54 @@ class Items(Resource):
     @authorizer(iam)
     def post(): ...
 
+    @authorizer(iam)
+    def put(): ...
+
 api.add(Items)
 ```
 
-More on Chalice authorizers you can find [here](https://github.com/aws/chalice/blob/master/docs/source/topics/authorizers.rst).
+Read more about Chalice authorizers [here](https://github.com/aws/chalice/blob/master/docs/source/topics/authorizers.rst).
 
 ### CORS
 
-...
+To enable CORS use `cors` configuration decorator:
+
+``` python
+from chalice import Chalice
+from chalice_restful import Api, Resource, cors, route
+
+app = Chalice('example')
+api = Api(app)
+
+@route('/v1/items')
+@cors
+class Items(Resource):
+    def get(): ...
+
+api.add(Items)
+```
+
+You can decorate individual endpoints as well:
+``` python
+from chalice import Chalice
+from chalice_restful import Api, Resource, cors, route
+
+app = Chalice('example')
+api = Api(app)
+
+@route('/v1/items')
+class Items(Resource):
+    def get(): ...
+
+    @cors
+    def post(): ...
+
+    @cors
+    def put(): ...
+
+
+api.add(Items)
+```
 
 ## License
 
