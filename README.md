@@ -1,6 +1,7 @@
 # Chalice-RESTful
 
 [![Build](https://github.com/JoshuaLight/chalice-restful/workflows/Build/badge.svg)](https://github.com/JoshuaLight/chalice-restful/actions)
+[![PyPI version](https://badge.fury.io/py/chalice-restful.svg)](https://badge.fury.io/py/chalice-restful)
 
 _A more structured way of writing [Chalice](https://github.com/aws/chalice) APIs.
 Very similar to [Flask-RESTful](https://github.com/flask-restful/flask-restful)._
