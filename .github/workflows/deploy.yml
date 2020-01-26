@@ -5,7 +5,7 @@ on:
     branches: master
 
 jobs:
-  build:
+  deploy:
 
     runs-on: ubuntu-latest
 
@@ -27,4 +27,4 @@ jobs:
       run: |
         pip install twine
         python setup.py sdist
-        twine upload --repository-url dist/* -u ${{secrets.pypi_username}} -p "${{secrets.pypi_password}}"
+        twine upload dist/* -u ${{secrets.pypi_username}} -p "${{secrets.pypi_password}}"
