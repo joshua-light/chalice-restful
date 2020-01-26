@@ -8,6 +8,7 @@ setup(
     description='Provides a more structured way of writing RESTful APIs ' +
                 'with Chalice.',
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     install_requires=['chalice'],
     url='https://github.com/JoshuaLight/chalice-restful',
     author='Joshua Light',
