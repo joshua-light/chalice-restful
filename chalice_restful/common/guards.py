@@ -1,5 +1,5 @@
-from typing import Any, Iterable
 from inspect import isclass
+from typing import Any, Iterable, Type
 
 
 class Ensure:
@@ -29,14 +29,14 @@ class Ensure:
             f'Expected {self.target} ' + \
             f'to be a class'
 
-    def is_not(self, x):
+    def is_not(self, x: Any):
         """Ensures that the target is not equal to the specified value."""
 
         assert self.target != x, \
             f'Expected {self.target} ' + \
             f'to not be {x}'
 
-    def is_subclass_of(self, x: type):
+    def is_subclass_of(self, x: Type):
         """Ensures that the target is subclass of the specified."""
 
         assert issubclass(self.target, x), \

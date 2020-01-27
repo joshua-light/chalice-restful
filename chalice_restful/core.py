@@ -1,7 +1,10 @@
+from typing import Callable, Dict, Type
+
 from chalice import Chalice
+from chalice.app import Request
 
 from chalice_restful.common.guards import ensure
-from chalice_restful.configs import flag, config, only_classes
+from chalice_restful.configs import config, flag, only_classes
 
 
 @config
@@ -111,7 +114,7 @@ class Api:
         self.app = app
 
     @property
-    def request(self):
+    def request(self) -> Request:
         """Incoming HTTP-request.
 
         This property is similar to `Chalice.current_request`,
@@ -121,7 +124,7 @@ class Api:
 
         return self.app.current_request
 
-    def add(self, resource: type):
+    def add(self, resource: Type):
         """Defines a `Resource` in the API.
 
         All the endpoints defined in the `resource` class that are
@@ -138,8 +141,8 @@ class Api:
                 c) `resource` doesn't have endpoints defined.
         """
 
-        def add_method(method: callable, app: Chalice):
-            def put(field: str, to: dict):
+        def add_method(method: Callable, app: Chalice):
+            def put(field: str, to: Dict[str, str]):
                 if field not in to:
                     value = getattr(method, field, None) or \
                             getattr(resource, field, None)

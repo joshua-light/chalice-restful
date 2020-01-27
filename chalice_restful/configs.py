@@ -1,7 +1,8 @@
 from inspect import isclass, isfunction
+from typing import Any, Callable
 
 
-def _enforce_constraints(decorator, instance):
+def _enforce_constraints(decorator: Callable, instance: Any):
     enforce_class = getattr(decorator, 'only_classes', False)
     enforce_function = getattr(decorator, 'only_functions', False)
 
@@ -20,7 +21,7 @@ def _enforce_constraints(decorator, instance):
             f'Expected {str(instance)} to be a function'
 
 
-def flag(decorator):
+def flag(decorator: Callable):
     """Makes another decorator a flag.
 
     `flag` is a high level decorator that should be
@@ -45,7 +46,7 @@ def flag(decorator):
         print(Test.enabled)  # Prints `True`.
     """
 
-    def body(x):
+    def body(x: Any):
 
         _enforce_constraints(decorator, x)
 
@@ -55,7 +56,7 @@ def flag(decorator):
     return body
 
 
-def config(decorator):
+def config(decorator: Callable):
     """Makes another decorator a config.
 
     `config` is a high level decorator that should be
@@ -86,7 +87,7 @@ def config(decorator):
             assert value >= 0
     """
 
-    def decorator_body(value):
+    def decorator_body(value: Any):
 
         # This allows client to validate the value in the decorator body.
         decorator(value)
