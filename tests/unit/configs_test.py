@@ -151,3 +151,21 @@ def test_that_cant_add_both_only_functions_and_only_classes_flags_to_function():
     # Assert.
     with pytest.raises(AssertionError):
         decorate()
+
+
+def test_that_multiple_flags_cant_override_each_other():
+    # Arrange.
+    @flag
+    def a(): ...
+
+    @flag
+    def b(): ...
+
+    # Act.
+    @a
+    @b
+    def func(): ...
+
+    # Assert.
+    assert func.a
+    assert func.b
