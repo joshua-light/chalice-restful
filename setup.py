@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='chalice-restful',
-    version='0.0.5',
+    version='1.0.0',
     packages=find_packages(exclude=['tests*']),
     license='MIT',
     description='Provides a more structured way of writing RESTful APIs ' +
@@ -14,7 +14,7 @@ setup(
     author='Joshua Light',
     author_email='j.light.developer@gmail.com',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
