@@ -148,11 +148,7 @@ api.add(Items)
 You can decorate individual endpoints as well:
 
 ``` python
-from chalice import Chalice
-from chalice_restful import Api, Resource, api_key_required, route
-
-app = Chalice('example')
-api = Api(app)
+...
 
 @route('/v1/items')
 class Items(Resource):
@@ -164,7 +160,7 @@ class Items(Resource):
     @api_key_required
     def put(): ...
 
-api.add(Items)
+...
 ```
 
 #### Authorizers
@@ -190,11 +186,8 @@ api.add(Items)
 You can decorate individual endpoints as well:
 
 ``` python
-from chalice import Chalice, IAMAuthorizer
-from chalice_restful import Api, Resource, authorizer, route
+...
 
-app = Chalice('example')
-api = Api(app)
 iam = IAMAuthorizer()
 
 @route('/v1/items')
@@ -207,7 +200,7 @@ class Items(Resource):
     @authorizer(iam)
     def put(): ...
 
-api.add(Items)
+...
 ```
 
 Read more about Chalice authorizers [here](https://github.com/aws/chalice/blob/master/docs/source/topics/authorizers.rst).
@@ -233,11 +226,7 @@ api.add(Items)
 
 You can decorate individual endpoints as well:
 ``` python
-from chalice import Chalice
-from chalice_restful import Api, Resource, cors, route
-
-app = Chalice('example')
-api = Api(app)
+...
 
 @route('/v1/items')
 class Items(Resource):
@@ -250,7 +239,7 @@ class Items(Resource):
     def put(): ...
 
 
-api.add(Items)
+...
 ```
 
 ## License
