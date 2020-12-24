@@ -22,7 +22,7 @@ def add_item(): ...
 ```
 
 This is great for building any kind of API, but in REST we deal with
-higher level objects -- resources, where each represents a set of functions
+higher-level objects –– resources, where each represents a set of functions
 related to each other.
 
 Though we still limited to write them in one place:
@@ -124,11 +124,11 @@ which can be defined in resources.
 
 ### Authorization
 
-You can add an authorization to resources or endpoints in several ways.
+You can add authorization to resources or endpoints in several ways.
 
 #### API key
 
-To require an API key use `api_key_required` configuration decorator:
+To require an API key, use `api_key_required` configuration decorator:
 
 ``` python
 from chalice import Chalice
@@ -165,7 +165,7 @@ class Items(Resource):
 
 #### Authorizers
 
-To add an authorizer instance use `authorizer` configuration decorator:
+To add an authorizer instance, use `authorizer` configuration decorator:
 
 ``` python
 from chalice import Chalice, IAMAuthorizer
@@ -207,7 +207,7 @@ Read more about Chalice authorizers [here](https://github.com/aws/chalice/blob/m
 
 ### CORS
 
-To enable CORS use `cors` configuration decorator:
+To enable CORS, use `cors` configuration decorator:
 
 ``` python
 from chalice import Chalice
